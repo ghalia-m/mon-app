@@ -1,5 +1,6 @@
-FROM nginx:alpine
-WORKDIR /usr/share/nginx/html
+FROM python:3.9
+WORKDIR /app
 COPY . .
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+RUN pip install -r requirements.txt
+EXPOSE 8082
+CMD ["python", "app.py"]
